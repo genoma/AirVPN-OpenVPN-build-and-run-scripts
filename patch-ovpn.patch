@@ -1,4 +1,10 @@
-19a20,22
-> script-security 2
-> up "connect.sh"
-> down "disconnect.sh"
+--- AirVPN.ovpn	2017-05-15 17:05:59.000000000 +0200
++++ AurVPN.ovpn	2017-05-15 16:51:17.000000000 +0200
+@@ -18,4 +18,7 @@
+ verb 3
+ explicit-exit-notify 5
++script-security 2
++up "connect.sh"
++down "disconnect.sh"
+ <ca>
+ -----BEGIN CERTIFICATE-----
