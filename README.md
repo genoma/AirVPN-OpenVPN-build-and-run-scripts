@@ -1,7 +1,7 @@
 AirVPN for OSX OPENVPN compiled from source
 ===========================================
 
-# DNS LIST
+## DNS LIST
 Protocol                  IP        DNS
 Port 443  - Protocol UDP	10.4.*.*	10.4.0.1
 Port 443  - Protocol TCP	10.5.*.*	10.5.0.1
@@ -14,3 +14,7 @@ Port 2018 - Protocol UDP	10.30.*.*	10.30.0.1
 Port 2018 - Protocol TCP
 Port 2018 - Protocol SSH
 Port 2018 - Protocol SSL	10.50.*.*	10.50.0.1
+
+## Closed Terminal
+
+`sudo killall -2 openvpn`
