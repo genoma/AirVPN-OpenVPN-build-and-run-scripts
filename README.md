@@ -1,10 +1,10 @@
 AirVPN scripts for macOS and OpenVPN compiled from source
 =========================================================
 
-A bunch of scripts I use to build OpenVPN, to patch **[AirVPN](https://airvpn.org/)** \*.ovpn files and to start a *KillSwitch* identical to **[Eddie](https://github.com/AirVPN/airvpn-client)**, the AirVPN official client.
+A bunch of scripts I use to build OpenVPN, to patch **[AirVPN](https://airvpn.org/)** \*.ovpn files and to start a *KillSwitch stolen* from **[Eddie](https://github.com/AirVPN/airvpn-client)**, the AirVPN official client.
 
 ### Why?
-Because I can and because **Eddie** on Mac OS is quite a bit unstable... so to speak.
+Because I can and because **Eddie** on Mac OS is quite a unstable... so to speak.
 
 ### Build OpenVPN
 Clone the OpenVPN repository (master or checkout a TAG to build stable release).
