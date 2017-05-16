@@ -4,9 +4,17 @@ AirVPN scripts for macOS and OpenVPN compiled from source
 A bunch of scripts I use to build OpenVPN, to patch **[AirVPN](https://airvpn.org/)** \*.ovpn files and to start a *KillSwitch stolen* from **[Eddie](https://github.com/AirVPN/airvpn-client)**, the AirVPN official client.
 
 ### Why?
-Because I can and because **Eddie** on Mac OS is quite a unstable... so to speak.
+Because I can and because **Eddie** on macOS is quite a unstable... so to speak.
 
-### Build OpenVPN
+# Use OpenVPN installed with [Homebrew](https://brew.sh/)
+
+`$ brew install openvpn stunnel`
+
+Add to your `~/.bashrc` or `.bash_profile` or `.zshrc` (if you're using ZSH) the following line:
+
+`export PATH=$(brew --prefix openvpn)/sbin:$PATH`
+
+# Or build OpenVPN from source
 Clone the OpenVPN repository (master or checkout a TAG to build stable release).
 
 `$ git clone https://github.com/OpenVPN/openvpn.git`
@@ -19,7 +27,7 @@ Call the compiler script `$ ./openvpn-build.sh`
 
 Add to your `~/.bashrc` or `.bash_profile` or `.zshrc` (if you're using ZSH) the following line:
 
-`export PATH=$(brew --prefix openvpn)/sbin:$PATH`
+`export PATH="/usr/local/sbin:$PATH"`
 
 ###### By default the script compiles with LibreSSL support, if you want OpenSSL instead comment/uncomment the `openvpn-build.sh` script in the appropriate section.
 
@@ -28,6 +36,8 @@ Add to your `~/.bashrc` or `.bash_profile` or `.zshrc` (if you're using ZSH) the
 macOS has built in it an old version on SSL, if you want the most recent downloaded with [Homebrew](https://brew.sh/) add to your `~/.bashrc`, `.bash_profile` or `.zshrc` (if you're using ZSH)
 
 `export PATH="/usr/local/opt/openssl/bin:$PATH"`
+
+# Configure ovpn files downloaded from [AirVPN](https://airvpn.org/)
 
 ### Patch the ovpn configuration downloaded from AirVPN
 
@@ -54,16 +64,14 @@ Port 2018 - Protocol TCP
 Port 2018 - Protocol SSH
 Port 2018 - Protocol SSL  10.50.*.*  10.50.0.1
 ```
-### Closed Terminal
+# Closed Terminal
 
 If you accidentally or voluntarily close the terminal, you can kill the OpenVPN processl later with:
 
 `sudo killall -2 openvpn`
 
-### Final notes
+# Final notes
 
 - Before building a new **OpenVPN** version do a `$ brew upgrade`
 - Always check that the DNS script is working on [IPLeak](https://ipleak.net/)
 - It works perfectly for me, but in case of doubts I strongly encourage you to ask on **[AirVPN](https://airvpn.org/)** if this method is safe, there are a bunch of nice guys on their forum that will help in case of necessity.
-
-### This code is distributed under the GNU GPLv3.
