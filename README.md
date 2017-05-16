@@ -42,6 +42,8 @@ macOS has built in it an old version on SSL, if you want the most recent downloa
 ### Patch the ovpn configuration downloaded from AirVPN
 The patch add the following 3 lines of code in the .ovpn file you've downloaded from [AirVPN](https://airvpn.org/):
 
+`AirVPN_WhateverIsTheName.ovpn < patch-ovpn.patch`
+
 ```
 script-security 2
 up "connect.sh"
@@ -52,7 +54,17 @@ down "disconnect.sh"
 - `up "connect.sh"` changes the **DNS** with the one provided by [AirVPN](https://airvpn.org/) - see section DNS LIST - changes the domain name to **openvpn** and start the *PF firewall killswitch**.
 - `down "disconnect.sh"` restore **DNS and domain name** to the original one and stops *PF*.
 
-`AirVPN_WhateverIsTheName.ovpn < patch-ovpn.patch`
+### A note on `connect.sh`
+
+Change the **DNS** with the one provided by [AirVPN](https://airvpn.org/) and the network interface.
+
+To list of all network interfaces `$ networksetup -listallhardwareports` and use the **Hardware Port** to configure the correct interface you're using to connect to internet (e.g. *Wi-Fi* **not En0**).
+
+### Disable IPV6
+
+`$ sudo networksetup -setv6off Wi-Fi`
+
+Again use the **Hardware Port** as shown in the previous section.
 
 ### Start your OpenVPN
 From inside the folder of this project place your **ovpn** files downloaded from [AirVPN](https://airvpn.org/) **Client Area** than from your termina `cd` into the folder and:
@@ -86,6 +98,14 @@ Port 2018 - Protocol TCP
 Port 2018 - Protocol SSH
 Port 2018 - Protocol SSL  10.50.*.*  10.50.0.1
 ```
+
+# Stunnel
+
+This is a bit of a headache for me, seems to work fine to have a fine **SSL** connection with AirVPN but it's fairly unstable, especially with not so strong connection signal through Wi-Fi, and **PF** configuration sometimes works, sometimes **stunnel** and **OpenVPN** needs to renegotiate credentials and to reconnect with AirVPN servers.
+
+Usually commenting the **pfctl** section on both `connect.sh` and `disconnect.sh` works better, unfortunately you'll lose the killswitch.
+
+- [ ] **TODO: further testing**
 
 # Final notes
 
