@@ -55,8 +55,19 @@ down "disconnect.sh"
 `AirVPN_WhateverIsTheName.ovpn < patch-ovpn.patch`
 
 ### Start your OpenVPN
+From inside the folder of this project place your **ovpn** files downloaded from [AirVPN](https://airvpn.org/) **Client Area** than from your termina `cd` into the folder and:
 
 `$ sudo openvpn AirVPN_WhateverIsTheName.ovpn`
+
+To quit the OpenVPN connection `CTRL+C`.
+
+### Closed Terminal ?
+
+If you accidentally or voluntarily close the terminal, you can kill the OpenVPN processl later with:
+
+`$ sudo killall -2 openvpn`
+
+Translated in english: kill all **openvpn** processes as they where killed by a keyboard input `CTRL+C`.
 
 # DNS LIST
 [AirVPN uses different DNS's depending on the protocol used for the connection](https://airvpn.org/specs/).
@@ -75,13 +86,6 @@ Port 2018 - Protocol TCP
 Port 2018 - Protocol SSH
 Port 2018 - Protocol SSL  10.50.*.*  10.50.0.1
 ```
-# Closed Terminal
-
-If you accidentally or voluntarily close the terminal, you can kill the OpenVPN processl later with:
-
-`$ sudo killall -2 openvpn`
-
-Translated in english: kill all **openvpn** processes as they where killed by a keyboard input `CTRL+C`
 
 # Final notes
 
