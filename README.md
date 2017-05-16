@@ -40,6 +40,17 @@ macOS has built in it an old version on SSL, if you want the most recent downloa
 # Configure ovpn files downloaded from [AirVPN](https://airvpn.org/)
 
 ### Patch the ovpn configuration downloaded from AirVPN
+The patch add the following 3 lines of code in the .ovpn file you've downloaded from [AirVPN](https://airvpn.org/):
+
+```
+script-security 2
+up "connect.sh"
+down "disconnect.sh"
+```
+
+- `script-security 2` allows external scripts to be executed.
+- `up "connect.sh"` changes the **DNS** with the one provided by [AirVPN](https://airvpn.org/) - see section DNS LIST - changes the domain name to **openvpn** and start the *PF firewall killswitch**.
+- `down "disconnect.sh"` restore **DNS and domain name** to the original one and stops *PF*.
 
 `AirVPN_WhateverIsTheName.ovpn < patch-ovpn.patch`
 
@@ -47,9 +58,9 @@ macOS has built in it an old version on SSL, if you want the most recent downloa
 
 `$ sudo openvpn AirVPN_WhateverIsTheName.ovpn`
 
-### DNS LIST
-Change the `connect.sh` `-setdnsservers` section with the correspondent DNS based on the protocol choice.
-
+# DNS LIST
+[AirVPN uses different DNS's depending on the protocol used for the connection](https://airvpn.org/specs/).
+Change the `connect.sh` `-setdnsservers` section with the correspondent DNS based on the protocol you've selected on the **configuration page** of your account.
 ```
 Protocol                  IP        DNS
 Port 443  - Protocol UDP  10.4.*.*  10.4.0.1
@@ -68,7 +79,9 @@ Port 2018 - Protocol SSL  10.50.*.*  10.50.0.1
 
 If you accidentally or voluntarily close the terminal, you can kill the OpenVPN processl later with:
 
-`sudo killall -2 openvpn`
+`$ sudo killall -2 openvpn`
+
+Translated in english: kill all **openvpn** processes as they where killed by a keyboard input `CTRL+C`
 
 # Final notes
 
