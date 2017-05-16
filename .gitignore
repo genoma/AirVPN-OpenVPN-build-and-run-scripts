@@ -26,3 +26,5 @@ Temporary Items
 
 # OpenVPN files
 *.ovpn
+*.crt
+*.ssl
