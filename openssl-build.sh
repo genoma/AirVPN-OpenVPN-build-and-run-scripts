@@ -7,9 +7,8 @@ make clean
 make distclean
 
 # Configure with the correct architecture
-./Configure darwin64-x86_64-cc no-ssl2 zlib-dynamic shared enable-cms
+./Configure darwin64-x86_64-cc enable-ec_nistp_64_gcc_128 no-ssl3 no-ssl3-method no-zlib
 
 # Make, test and install
 make depend
-make test
 make install
