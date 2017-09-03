@@ -1,8 +1,11 @@
 #!/bin/sh
 
-/usr/sbin/networksetup -setdnsservers Wi-Fi empty
-/usr/sbin/networksetup -setsearchdomains Wi-Fi empty
+# /usr/sbin/networksetup -setdnsservers Wi-Fi empty
+# /usr/sbin/networksetup -setsearchdomains Wi-Fi empty
+
+client.down.tunnelblick.sh
 /sbin/pfctl -Fa -f /etc/pf.conf -d
+
 # Clear DNS cache
-sudo /usr/bin/killall -HUP mDNSResponder
-sudo /usr/bin/dscacheutil -flushcache
+# sudo /usr/bin/killall -HUP mDNSResponder
+# sudo /usr/bin/dscacheutil -flushcache
